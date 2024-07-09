@@ -17,7 +17,10 @@ const userSchema = new mongoose.Schema({
         type:String,
         required: [true, "Password is required"]
     },
- 
+    initialBalance: {
+        type: Number,
+        required: [true, "Initial Balance is required"]
+    }
     },
     {timestamps:true}
 );
