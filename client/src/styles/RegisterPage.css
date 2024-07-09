@@ -1,0 +1,90 @@
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.register-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad0c4, #ff9a9e);
+  background-size: 600% 600%;
+  animation: gradient 15s ease-in-out;
+  padding: 20px;
+}
+
+.register-form {
+  width: 100%;
+  max-width: 500px;
+  height: 550px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.register-form h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.register-form .form-item {
+  margin-bottom: 15px;
+}
+
+.register-form .form-item input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.register-form .link {
+  margin: 10px;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.register-form .link:hover {
+  color: black;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.register-form .btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.register-form .btn:hover {
+  background: red;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.register-form label
+{
+  color: black !important;
+  font-weight: bold;
+  font-size: x-large;
+}
