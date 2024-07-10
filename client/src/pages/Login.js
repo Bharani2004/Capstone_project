@@ -21,7 +21,15 @@ const Login = () => {
             navigate('/');
         } catch (error) {
             setLoading(false);
-            message.error('Something went wrong');
+            if (error.response && error.response.status === 404) {
+                message.error('Incorrect email');
+            } else if (error.response && error.response.status === 401) {
+                message.error('Invalid password');
+            } 
+            
+            else {
+                message.error('Something went wrong');
+            }
         }
     };
 
