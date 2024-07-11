@@ -27,7 +27,7 @@ const HomePage = () => {
     try {
       const user = JSON.parse(localStorage.getItem('user'));
       if (user) {
-        const response = await axios.post('http://localhost:8000/api/v1/users/get-balance', { userId: user._id });
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/users/get-balance`, { userId: user._id });
         setBalance(response.data.balance);
       }
     } catch (error) {
@@ -39,7 +39,7 @@ const HomePage = () => {
     try {
       const user = JSON.parse(localStorage.getItem('user'));
       setLoading(true);
-      const res = await axios.post("/transactions/get-transaction", { userid: user._id, frequency, selectedDate, type, sortBy });
+      const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/transactions/get-transaction`, { userid: user._id, frequency, selectedDate, type, sortBy });
       setLoading(false);
       setAllTransaction(res.data);
     } catch (error) {
@@ -58,7 +58,7 @@ const HomePage = () => {
       const user = JSON.parse(localStorage.getItem('user'));
       setLoading(true);
       if (editable && editable._id) {
-        await axios.post('/transactions/edit-transaction', {
+        await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/transactions/edit-transaction`, {
           payload: {
             ...values,
             userid: user._id
@@ -67,7 +67,7 @@ const HomePage = () => {
         });
         message.success('Transaction Updated Successfully');
       } else {
-        await axios.post('/transactions/add-transaction', { ...values, userid: user._id });
+        await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/transactions/add-transaction`, { ...values, userid: user._id });
         message.success('Transaction Added Successfully');
       }
       setLoading(false);
@@ -85,7 +85,7 @@ const HomePage = () => {
   const handleDelete = async (record) => {
     try {
       setLoading(true);
-      await axios.post("/transactions/delete-transaction", { transactionId: record._id });
+      await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/transactions/delete-transaction`, { transactionId: record._id });
       setLoading(false);
       message.success("Transaction Deleted");
       fetchBalance();
